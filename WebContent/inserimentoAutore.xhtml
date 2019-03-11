@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+ 
+<h:head>
+</h:head>
+	
+<h:body style="background-image: url(images/book.png);">
+	<h:form>
+	
+			<p:tab id="autore" title="Autore">
+				<p:panel header="Dati autore">
+					<p:messages />
+					<h:panelGrid columns="2" columnClasses="label, value">
+						<h:outputText value="Nome: " />
+						<p:inputText value="#{beanAutore.autore.nome}" />
+
+						<h:outputText value="Cognome: " />
+						<p:inputText value="#{beanAutore.autore.cognome}" />
+
+						<h:outputText value="Nazionalità: " />
+						<p:inputText value="#{beanAutore.autore.nazionalita}" />
+
+						<h:outputText value="Anno di nascita: " />
+						<p:inputText value="#{beanAutore.autore.annoDiNascita}" />
+
+					</h:panelGrid>
+					
+					<p:commandButton value="Inserisci Autore" actionListener="#{beanAutore.inserisciAutore()}" ajax="false"
+						update="growl" process="@this" action="autori?faces-redirect=true"/>
+						
+				</p:panel>
+			</p:tab>
+			
+				<p:commandButton value="Torna alla pagina iniziale"  action="index?faces-redirect=true"/>
+												
+				<p:commandButton value="Visualizza autori"  action="autori?faces-redirect=true"/>
+				
+				<p:commandButton value="Modifica autore"  action="modificaAutore?faces-redirect=true"/>
+								
+	</h:form>
+</h:body>
+
+</html>

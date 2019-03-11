@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+   
+   				 <h:head>
+   	<script type="text/javascript">
+    function handleDrop(event, ui) {
+        var droppedEditors = ui.draggable;
+ 
+        droppedEditors.fadeOut('fast');
+    }
+</script>
+   				 </h:head> 
+    				   
+   				 	<h:body style="background-image: url(images/book.png);">
+   				 	<h:form>
+   				 	
+   				 	   	<h:panelGrid>
+   				 		<p:fieldset id="trash" legend="cestino">
+   				 			<p:graphicImage id="cestino" value="/images/cestino.png"/>
+   				 		</p:fieldset>
+   				 		</h:panelGrid>
+   				 		
+   				 		<p:dataTable id="editori" var="editore" value="#{beanEditore.editori}">
+   				 		<p:column>
+   				 				<p:graphicImage id="img" value="/images/editIco.png"/>
+   				 					<p:draggable for="img" revert="true" helper="clone"/>
+   				 			</p:column>
+							 <p:column headerText="Nome" sortBy="#{editore.nome}" filterBy="#{editore.nome}">
+							   		<h:outputText value="#{editore.nome}" />
+							   	</p:column>
+							 <p:column headerText="Sede legale">
+							 		<h:outputText value="#{editore.indirizzo}" />
+							 </p:column>
+							 <p:column headerText="Sito web">
+							 <h:outputLink value="http://#{editore.sito}">
+							 	<h:outputText value="#{editore.sito}" />
+							 </h:outputLink>
+							</p:column>
+						</p:dataTable>
+
+   				 		<p:droppable for="trash" tolerance="touch" datasource="editori" onDrop="handleDrop">
+   				 			<p:ajax listener="#{beanEditore.deleteEditori}" update="editori"/>
+   				 		</p:droppable>
+   				 		
+   				 		</h:form>
+   				<p:commandButton value="Torna alla pagina iniziale"  action="index?faces-redirect=true"/>
+								
+				<p:commandButton value="Aggiungi un editore"  action="inserimentoEditore?faces-redirect=true"/>
+				
+				<p:commandButton value="Modifica editore"  action="modificaEditore?faces-redirect=true"/>
+   				 	</h:body>
+   
+</html>

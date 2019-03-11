@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+
+<h:body style="background-image: url(images/book.png);">
+	<h:form>
+		<p:growl id="growl" sticky="true" showDetail="true" />
+
+		<p:tab id="libro" title="Libro">
+			<p:panel header="Dati libro">
+				<p:messages />
+				<h:panelGrid columns="2" columnClasses="label, value">
+					<h:outputText value="Titolo: " />
+					<p:inputText value="#{beanLibro.libro.titolo}" />
+
+					<h:outputText value="Serie " />
+					<p:inputText value="#{beanLibro.libro.serie}" />
+
+					<h:outputText value="Collana: " />
+					<p:inputText value="#{beanLibro.libro.collana}" />
+
+					<h:outputText value="Anno: " />
+					<p:inputText value="#{beanLibro.libro.anno}" />
+
+					<h:outputText value="Lingua: " />
+					<p:inputText value="#{beanLibro.libro.lingua}" />
+
+					<h:outputText value="Pagine: " />
+					<p:inputText value="#{beanLibro.libro.pagine}" />
+
+					<h:outputText value="Prezzo: " />
+					<p:inputText value="#{beanLibro.libro.prezzo}" />
+
+					<h:outputText value="ISBN: " />
+					<p:inputText value="#{beanLibro.libro.isbn}" />
+
+					<h:outputText value="Autore: " />
+					<p:selectOneMenu value="#{beanLibro.libro.id_autore}">
+						<f:selectItems value="#{beanAutore.autori}" var="autore"
+							itemLabel="#{autore.nomeCompleto}" itemValue="#{autore.id}" />
+
+					</p:selectOneMenu>
+
+					<h:outputText value="Editore: " />
+					<p:selectOneMenu value="#{beanLibro.libro.id_editore}">
+						<f:selectItems value="#{beanEditore.editori}" var="editore"
+							itemLabel="#{editore.nome}" itemValue="#{editore.id}" />
+
+					</p:selectOneMenu>
+					
+<!-- 					<h:outputText value="Genere: " /> -->
+<!-- 					<p:selectOneMenu value="#{beanLibro.libro.id_editore}" editable="true"> -->
+<!-- 						<f:selectItems value="#{beanEditore.editori}" var="editore" -->
+<!-- 							itemLabel="#{editore.nome}" itemValue="#{editore.id}" /> -->
+
+<!-- 					</p:selectOneMenu> -->
+
+				</h:panelGrid>
+
+				<p:commandButton value="Inserisci Libro"
+					actionListener="#{beanLibro.inserisciLibro()}" ajax="false"
+					update="growl" process="@this"/>
+
+			</p:panel>
+		</p:tab>
+				<p:commandButton value="Torna alla pagina iniziale"  action="index?faces-redirect=true"/>
+				
+				<p:commandButton value="Vai alla libreria"  action="libri?faces-redirect=true"/>
+				
+				<p:commandButton value="Modifica libro"  action="modificaLibro?faces-redirect=true"/>
+				
+	</h:form>
+</h:body>
+
+</html>

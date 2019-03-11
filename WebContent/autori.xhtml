@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+   
+   				 <h:head>
+  <script type="text/javascript">
+    function handleDrop(event, ui) {
+        var droppedAutori = ui.draggable;
+ 
+        droppedAutori.fadeOut('fast');
+    }
+</script>
+   				 </h:head> 
+    				   
+   				 	<h:body style="background-image: url(images/book.png);">
+   				 		<h:form>
+   				 		
+	   				 		<h:panelGrid>
+	   				 		<p:fieldset id="trash" legend="cestino">
+	   				 			<p:graphicImage id="cestino" value="/images/cestino.png"/>
+	   				 		</p:fieldset>
+	   				 		</h:panelGrid>
+	   				 		
+   				 		<p:dataTable id="autori" var="autore" value="#{beanAutore.autori}">
+   				 		
+   				 			<p:column>
+   				 				<p:graphicImage id="img" value="/images/marioico.png"/>
+   				 					<p:draggable for="img" revert="true" helper="clone"/>
+   				 			</p:column>
+							 <p:column headerText="Nome" sortBy="#{autore.nome}" filterBy="#{autore.nome}">
+							   		<h:outputText value="#{autore.nome}" />
+							   	</p:column>
+							 <p:column headerText="Cognome">
+							 		<h:outputText value="#{autore.cognome}" />
+							 </p:column>
+							 <p:column headerText="Nazionalità">
+								 	<h:outputText value="#{autore.nazionalita}" />
+							 </p:column>
+							 <p:column headerText="Anno di nascita">
+								 	<h:outputText value="#{autore.eta}" />
+							 </p:column>
+
+   				 		</p:dataTable>
+   				 		
+   				 		<p:droppable for="trash" tolerance="touch" datasource="autori" onDrop="handleDrop">
+   				 			<p:ajax listener="#{beanAutore.deleteAutori}" update="autori"/>
+   				 		</p:droppable>
+   				 		
+			   				<p:commandButton value="Torna alla pagina iniziale"  action="index?faces-redirect=true"/>
+														
+							<p:commandButton value="Aggiungi un autore"  action="inserimentoAutore?faces-redirect=true"/>
+							
+							<p:commandButton value="Modifica un autore"  action="modificaAutore?faces-redirect=true"/>
+   				 		
+   				 		</h:form>
+   				 	</h:body>
+   
+</html>

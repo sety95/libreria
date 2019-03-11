@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+
+<h:body style="background-image: url(images/book.png);">
+	<h:form>
+		<p:growl id="growl" sticky="true" showDetail="true" />
+
+		<p:tab id="Editore" title="Editore">
+			<p:panel header="Modifica Editore">
+				<p:messages />
+				<h:panelGrid columns="2" columnClasses="label, value">
+				
+					<h:outputText value="Editore "/>
+					<p:selectOneMenu value="#{beanEditore.nome}">
+						<f:selectItem  itemLabel="Seleziona editore" itemValue=""/>
+						<f:selectItems value="#{beanEditore.editori}" var="editore"
+							itemLabel="#{editore.nome}" itemValue="#{editore.nome}"/>
+					<p:ajax event="change" update="@form" listener="#{beanEditore.creaEditore()}"/>
+					</p:selectOneMenu>
+					
+					
+					<h:outputText value="Nome " />
+					<p:inputText value="#{beanEditore.editore.nome}"/>
+
+					<h:outputText value="Indirizzo " />
+					<p:inputText value="#{beanEditore.editore.indirizzo}" />
+
+					<h:outputText value="Sito " />
+					<p:inputText value="#{beanEditore.editore.sito}" />
+
+
+				</h:panelGrid>
+
+				<p:commandButton value="Conferma modifiche"
+					actionListener="#{beanEditore.modifyEditore}" ajax="false"
+					update="growl" process="@this" />
+
+			</p:panel>
+		</p:tab>
+				<p:commandButton value="Torna alla pagina iniziale"  action="index?faces-redirect=true"/>
+				
+				<p:commandButton value="Visualizza gli editori"  action="editori?faces-redirect=true"/>
+				
+				<p:commandButton value="Aggiungi un editore"  action="inserimentoEditore?faces-redirect=true"/>
+	</h:form>
+</h:body>
+
+</html>

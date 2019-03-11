@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<head>
+<title>Libreria</title>
+	<style>
+	h1 {
+text-shadow: 0 0 10px #fff,
+0 0 20px #fff,
+0 0 30px #fff,
+0 0 40px #ff00de,
+0 0 70px #ff00de,
+0 0 80px #ff00de,
+0 0 100px #ff00de,
+0 0 150px #ff00de;
+}
+	</style>
+</head>
+
+<h:head>
+	<h:body style="background-image: url(images/book.png);">
+		<h1>BENVENUTO,NELLA TUA LIBRERIA PERSONALE</h1>
+		<hr />
+		<h:form>
+			<p:megaMenu orientation="horizontal">
+				<p:submenu label="Libri">
+					<p:column>
+						<p:submenu label="CRUD">
+							<p:menuitem value="Inserimento" url="inserimentoLibro.xhtml" />
+							<p:menuitem value="Visualizza/Elimina" url="libri.xhtml" />
+							<p:menuitem value="Modifica" url="modificaLibro.xhtml" />
+						</p:submenu>
+					</p:column>
+
+					<p:column>
+						<strong>Books</strong>
+						<p:graphicImage value="images/biblios.png" />
+					</p:column>
+
+				</p:submenu>
+
+				<p:submenu label="Autori">
+					<p:column>
+						<p:submenu label="CRUD">
+							<p:menuitem value="Inserimento" url="inserimentoAutore.xhtml" />
+							<p:menuitem value="Visualizza/Elimina" url="autori.xhtml" />
+							<p:menuitem value="Modifica" url="modificaAutore.xhtml" />
+						</p:submenu>
+					</p:column>
+
+					<p:column>
+						<strong>Authors</strong>
+						<p:graphicImage value="images/authors.png" />
+					</p:column>
+				</p:submenu>
+
+				<p:submenu label="Editori">
+					<p:column>
+						<p:submenu label="CRUD">
+							<p:menuitem value="Inserimento" url="inserimentoEditore.xhtml" />
+							<p:menuitem value="Visualizza/Elimina" url="editori.xhtml" />
+							<p:menuitem value="Modifica" url="modificaEditore.xhtml" />
+						</p:submenu>
+					</p:column>
+
+					<p:column>
+						<strong>Editors</strong>
+						<p:graphicImage value="images/editors.png" />
+					</p:column>
+				</p:submenu>
+
+			</p:megaMenu>
+
+		</h:form>
+	</h:body>
+</h:head>
+
+
+
+</html>
