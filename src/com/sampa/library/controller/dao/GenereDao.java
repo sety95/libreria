@@ -1,4 +1,4 @@
-package com.exolab.dao;
+package com.sampa.library.controller.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,8 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.exolab.model.Genere;
-import com.exolab.utility.Connessione;
+import com.sampa.library.models.pojos.Genere;
+import com.sampa.library.utility.Connessione;
 
 public class GenereDao {
 

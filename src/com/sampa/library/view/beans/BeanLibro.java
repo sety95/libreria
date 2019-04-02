@@ -1,4 +1,4 @@
-package com.exolab.controller;
+package com.sampa.library.view.beans;
 
 import java.io.Serializable;
 import java.sql.SQLException;
@@ -13,9 +13,9 @@ import javax.naming.NamingException;
 
 import org.primefaces.event.DragDropEvent;
 
-import com.exolab.dao.LibroDao;
-import com.exolab.dto.DtoLibri;
-import com.exolab.model.Libro;
+import com.sampa.library.controller.dao.LibroDao;
+import com.sampa.library.models.pojos.Libro;
+import com.sampa.library.controller.dto.DtoLibri;
 
 @Named
 @SessionScoped

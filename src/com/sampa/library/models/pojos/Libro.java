@@ -1,4 +1,4 @@
-package com.exolab.model;
+package com.sampa.library.models.pojos;
 
 public class Libro {
 

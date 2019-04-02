@@ -1,4 +1,4 @@
-package com.exolab.dao;
+package com.sampa.library.controller.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,9 +7,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.exolab.dto.DtoAutori;
-import com.exolab.model.Autore;
-import com.exolab.utility.Connessione;
+import com.sampa.library.controller.dto.DtoAutori;
+import com.sampa.library.models.pojos.Autore;
+import com.sampa.library.utility.Connessione;
+
 
 public class AutoreDao {
 

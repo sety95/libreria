@@ -1,4 +1,4 @@
-package com.exolab.controller;
+package com.sampa.library.view.beans;
 
 import java.io.Serializable;
 import java.sql.SQLException;
@@ -12,9 +12,9 @@ import javax.inject.Named;
 
 import org.primefaces.event.DragDropEvent;
 
-import com.exolab.dao.EditoreDao;
-import com.exolab.dto.DtoEditori;
-import com.exolab.model.Editore;
+import com.sampa.library.controller.dao.EditoreDao;
+import com.sampa.library.models.pojos.Editore;
+import com.sampa.library.controller.dto.DtoEditori;
 
 @Named
 @SessionScoped

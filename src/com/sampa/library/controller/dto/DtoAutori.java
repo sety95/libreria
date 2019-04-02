@@ -1,20 +1,15 @@
-package com.exolab.model;
+package com.sampa.library.controller.dto;
 
 
-public class Autore {
+public class DtoAutori {
 
-	private int annoDiNascita;
 	private String nome;
 	private String cognome;
 	private String nazionalita;
+	private int eta;
 	private int id;
-
-	public int getAnnoDiNascita() {
-		return annoDiNascita;
-	}
-	public void setAnnoDiNascita(int annoDiNascita) {
-		this.annoDiNascita = annoDiNascita;
-	}
+	private String nomeCompleto;
+	
 	public String getNome() {
 		return nome;
 	}
@@ -33,17 +28,23 @@ public class Autore {
 	public void setNazionalita(String nazionalita) {
 		this.nazionalita = nazionalita;
 	}
-
+	public int getEta() {
+		return eta;
+	}
+	public void setEta(int eta) {
+		this.eta = eta;
+	}
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	@Override
-	public String toString() {
-		return "Autore [annoDiNascita=" + annoDiNascita + ", nome=" + nome + ", cognome=" + cognome + ", nazionalita="
-				+ nazionalita + "]";
+	public String getNomeCompleto() {
+		return nomeCompleto;
+	}
+	public void setNomeCompleto() {
+		this.nomeCompleto = nome + " " + cognome;
 	}
 	
 }

@@ -1,4 +1,4 @@
-package com.exolab.dto;
+package com.sampa.library.controller.dto;
 
 
 public class DtoEditori {

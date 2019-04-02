@@ -1,4 +1,4 @@
-package com.exolab.utility;
+package com.sampa.library.utility;
 
 public class Controll {
 	

@@ -1,15 +1,20 @@
-package com.exolab.dto;
+package com.sampa.library.models.pojos;
 
 
-public class DtoAutori {
+public class Autore {
 
+	private int annoDiNascita;
 	private String nome;
 	private String cognome;
 	private String nazionalita;
-	private int eta;
 	private int id;
-	private String nomeCompleto;
-	
+
+	public int getAnnoDiNascita() {
+		return annoDiNascita;
+	}
+	public void setAnnoDiNascita(int annoDiNascita) {
+		this.annoDiNascita = annoDiNascita;
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -28,23 +33,17 @@ public class DtoAutori {
 	public void setNazionalita(String nazionalita) {
 		this.nazionalita = nazionalita;
 	}
-	public int getEta() {
-		return eta;
-	}
-	public void setEta(int eta) {
-		this.eta = eta;
-	}
+
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getNomeCompleto() {
-		return nomeCompleto;
-	}
-	public void setNomeCompleto() {
-		this.nomeCompleto = nome + " " + cognome;
+	@Override
+	public String toString() {
+		return "Autore [annoDiNascita=" + annoDiNascita + ", nome=" + nome + ", cognome=" + cognome + ", nazionalita="
+				+ nazionalita + "]";
 	}
 	
 }
