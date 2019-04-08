@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL" />
+		<setting name="logImpl" value="LOG4J" />
+	</settings>
+
+<!-- 	<typeHandlers> -->
+<!-- 		<typeHandler javaType="java.util.Date" jdbcType="VARCHAR" -->
+<!-- 			handler="it.sogei.ssi.pannelloantifrode.view.handler.XmlGregorianCalendarDateTypeHandler" /> -->
+<!-- 	</typeHandlers> -->
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="MANAGED"/>
+<!-- 				<property name="commitRequired" value="true" /> -->
+<!-- 			</transactionManager> -->
+			<dataSource type="JNDI">
+				<property name="data_source" value="java:/hash" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+		<mapper class = "com.sampa.library.controller.mappers.LibroMapper"/>		
+	</mappers>
+</configuration>

@@ -13,8 +13,8 @@ import javax.inject.Named;
 import org.primefaces.event.DragDropEvent;
 
 import com.sampa.library.controller.dao.EditoreDao;
-import com.sampa.library.models.pojos.Editore;
 import com.sampa.library.controller.dto.DtoEditori;
+import com.sampa.library.models.pojos.Editore;
 
 @Named
 @SessionScoped

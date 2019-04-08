@@ -13,8 +13,8 @@ import javax.inject.Named;
 import org.primefaces.event.DragDropEvent;
 
 import com.sampa.library.controller.dao.AutoreDao;
-import com.sampa.library.models.pojos.Autore;
 import com.sampa.library.controller.dto.DtoAutori;
+import com.sampa.library.models.pojos.Autore;
 
 
 @Named
