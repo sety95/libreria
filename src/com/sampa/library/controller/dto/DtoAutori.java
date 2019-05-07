@@ -8,7 +8,6 @@ public class DtoAutori {
 	private String nazionalita;
 	private int eta;
 	private int id;
-	private String nomeCompleto;
 	
 	public String getNome() {
 		return nome;
@@ -41,10 +40,7 @@ public class DtoAutori {
 		this.id = id;
 	}
 	public String getNomeCompleto() {
-		return nomeCompleto;
+		return nome + " " + cognome;
 	}
-	public void setNomeCompleto() {
-		this.nomeCompleto = nome + " " + cognome;
-	}
-	
+
 }

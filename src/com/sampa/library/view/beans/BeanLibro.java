@@ -11,6 +11,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
+import org.apache.log4j.Logger;
 import org.primefaces.event.DragDropEvent;
 
 import com.sampa.library.controller.dao.LibroDao;
@@ -20,6 +21,8 @@ import com.sampa.library.models.pojos.Libro;
 @Named
 @SessionScoped
 public class BeanLibro implements Serializable {
+	
+	private final static Logger log = Logger.getLogger(BeanLibro.class);
 
 	private static final long serialVersionUID = -3415335071697029412L;
 	
