@@ -2,6 +2,7 @@ package com.sampa.library.view.beans;
 
 import java.io.Serializable;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -9,7 +10,6 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import javax.naming.NamingException;
 
 import org.primefaces.event.DragDropEvent;
 
@@ -21,17 +21,19 @@ import com.sampa.library.models.pojos.Libro;
 @SessionScoped
 public class BeanLibro implements Serializable {
 
-	
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = -3415335071697029412L;
 	
 	private List<DtoLibri> libri;
+	private List<DtoLibri> listaFiltrata = new ArrayList<DtoLibri>();
 	private LibroDao dao;
 	private Libro libro;
-	private String titoloDiRicerca;
+//	private String titoloDiRicerca;
+	private DtoLibri libroSelezionato;
+//	private String titolo;
 	
 	@PostConstruct
-	public void init() {
+	public void init() throws SQLException {
+//	titolo = "";
 	dao = new LibroDao();
 //	System.out.println("chiamato dao");
 	libro = new Libro();
@@ -42,14 +44,9 @@ public class BeanLibro implements Serializable {
 		return libri;
 	}
 	
-	public void setLibri() {
-		try {
-			libri = dao.selectAll();
+	public void setLibri() throws SQLException {
+		libri = dao.getAll();
 //			System.out.println("metodo chiamato per libri");
-		} catch (SQLException e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,"Lista non inizializzata",null));
-			e.printStackTrace();
-		}
 	}
 	
 	public Libro getLibro() {
@@ -75,17 +72,14 @@ public class BeanLibro implements Serializable {
 		} 
 	}
 	
-	public String getTitoloDiRicerca() {
-		return titoloDiRicerca;
-	}
-
-	public void setTitoloDiRicerca(String titoloDiRicerca) {
-		this.titoloDiRicerca = titoloDiRicerca;
-	}
+//	public String getTitoloDiRicerca() {
+//		return titoloDiRicerca;
+//	}
+//
+//	public void setTitoloDiRicerca(String titoloDiRicerca) {
+//		this.titoloDiRicerca = titoloDiRicerca;
+//	}
 	
-	public void creaLibro() throws SQLException, NamingException {
-		this.libro = searchLibro(titoloDiRicerca);
-	}
 
 	public void deleteLibro(DragDropEvent ddEvent) {
 		try {
@@ -105,23 +99,37 @@ public class BeanLibro implements Serializable {
 //		System.out.println("libro in modify: " + libro.toString());
 //		System.out.println("libroTemp in modify: " + searchLibro(titoloDiRicerca).toString());
 		try {
-			dao.update(libro,searchLibro(titoloDiRicerca).getIsbn());
+			dao.update(libro);
 			setLibri();
 			FacesMessage msg = new FacesMessage("Successo :D",  "e' andato tutto bene, modifica effettuata con successo");
 			FacesContext.getCurrentInstance().addMessage(null, msg);
 		} catch (SQLException e) {
 			FacesMessage msg = new FacesMessage("Fallimento >.<",  "qualcosa e' andato storto");
 			FacesContext.getCurrentInstance().addMessage(null, msg);
-			e.printStackTrace();
-		} catch (NamingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			e.printStackTrace();}
 	}
-	
-	private Libro searchLibro(String parametro) throws SQLException, NamingException {
-		Libro libroTemp;
-		libroTemp = dao.findByParams("titolo", parametro);
-		return libroTemp;
+
+	public DtoLibri getLibroSelezionato() {
+		return libroSelezionato;
+	}
+
+	public void setLibroSelezionato(DtoLibri libroSelezionato) {
+		this.libroSelezionato = libroSelezionato;
+	}
+
+//	public String getTitolo() {
+//		return titolo;
+//	}
+//
+//	public void setTitolo(String titolo) {
+//		this.titolo = titolo;
+//	}
+
+	public List<DtoLibri> getListaFiltrata() {
+		return listaFiltrata;
+	}
+
+	public void setListaFiltrata(List<DtoLibri> listaFiltrata) {
+		this.listaFiltrata = listaFiltrata;
 	}
 }

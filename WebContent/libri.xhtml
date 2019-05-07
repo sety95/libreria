@@ -6,9 +6,9 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-   
-   				 <h:head>
-   				 <script type="text/javascript">
+
+<h:head>
+	<script type="text/javascript">
     function handleDrop(event, ui) {
         var droppedBook = ui.draggable;
  
@@ -16,80 +16,86 @@
     }
 </script>
 	<style>
-	h1 {
-text-shadow: 0 0 10px #fff,
-0 0 20px #fff,
-0 0 30px #fff,
-0 0 40px #ff00de,
-0 0 70px #ff00de,
-0 0 80px #ff00de,
-0 0 100px #ff00de,
-0 0 150px #ff00de;
+h1 {
+	text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px
+		#ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0
+		150px #ff00de;
 }
-	</style>
-   				 </h:head> 
-    				   
-   				 	<h:body style="background-image: url(images/book.png);">
-   				 	<h1>Benvenuto</h1>
-   				 		<h:form>
-   				 		<h:panelGrid>
-   				 		
-   				 		<h3>Trascina il libro qui per eliminarlo</h3>
-   				 			<p:graphicImage id="trash" value="/images/cestino.png"/>
-   				 		</h:panelGrid>
-   				 				
-   				 		<p:dataTable id="books" var="libro" value="#{beanLibro.libri}">
-   				 		
-	   				 		<p:column>
-	   				 			<p:graphicImage id="img" value="/images/Book-icon.png"/>
-	   				 				<p:draggable for="img" revert="true" helper="clone"/>
-	   				 		</p:column>
-							 <p:column headerText="Titolo" sortBy="#{libro.titolo}" >
-							   		<h:outputText  value="#{libro.titolo}" />
-							   	</p:column>
-							 <p:column headerText="Autore">
-								 	<h:outputText value="#{libro.autore}" />
-							 </p:column>
-							 <p:column headerText="Anno di pubblicazione">
-								 	<h:outputText value="#{libro.anno}" />
-							 </p:column>
-							 <p:column headerText="Lingua">
-							 	<h:outputText value="#{libro.lingua}" />
-							 </p:column>
-							 <p:column headerText="Serie">
-							 		<h:outputText value="#{libro.serie}" />
-							 </p:column>
-							 <p:column headerText="Collana">
-								 	<h:outputText value="#{libro.collana}" />
-							 </p:column>
-							 <p:column headerText="ISBN">
-								 	<h:outputText value="#{libro.isbn}" />
-							 </p:column>
-<!-- 							 <p:column headerText="Genere"  sortBy="#{libro.titolo}"> -->
-<!-- 								 	<h:outputText value="#{libro.genere}" /> -->
-<!-- 							 </p:column> -->
-							 <p:column headerText="Pagine">
-							 		<h:outputText value="#{libro.pagine}" />
-							 </p:column>
-							 <p:column headerText="Prezzo">
-								 	<h:outputText value="#{libro.prezzo}" />
-							 </p:column>
-							 <p:column headerText="Editore">
-							 	<h:outputText value="#{libro.editore}" />
-							 </p:column>
-   				 		</p:dataTable>
-   				 		
-   				 		<p:droppable for="trash" tolerance="touch" datasource="books" onDrop="handleDrop">
-   				 			<p:ajax listener="#{beanLibro.deleteLibro}" update="books"/>
-   				 		</p:droppable>
-   				 		
-		   				<p:commandButton value="Torna alla pagina iniziale"  action="index?faces-redirect=true"/>
-						
-						<p:commandButton value="Aggiungi un libro"  action="inserimentoLibro?faces-redirect=true"/>
-						
-						<p:commandButton value="Modifica un libro"  action="modificaLibro?faces-redirect=true"/>
-				
-   				 		</h:form>
-   				 	</h:body>
-   
+</style>
+</h:head>
+
+<h:body style="background-image: url(images/book.png);">
+	<h1>Benvenuto</h1>
+	<h:form>
+		<h:panelGrid>
+
+			<h3>Trascina il libro qui per eliminarlo</h3>
+			<p:graphicImage id="trash" value="/images/cestino.png" />
+		</h:panelGrid>
+
+		<p:dataTable id="books" var="libro" value="#{beanLibro.libri}" widgetVar="libriLibrosi" filteredValue="#{beanLibro.listaFiltrata}" emptyMessage="Nessun elemento corrispondente">
+
+			<f:facet name="header">
+				<p:outputPanel>
+					<h:outputText value="Cerca per titolo:" />
+					<p:inputText id="globalFilter" style="width:150px" placeholder="Inserisci titolo" onkeyup="PF('libriLibrosi').filter()"/>
+				</p:outputPanel>
+			</f:facet>
+			
+			<p:column>
+				<p:graphicImage id="img" value="/images/Book-icon.png" />
+				<p:draggable for="img" revert="true" helper="clone" />
+			</p:column>
+			<p:column headerText="Titolo" filterBy="#{libro.titolo}" filterStyle="display:none">
+				<h:outputText value="#{libro.titolo}" />
+			</p:column>
+			<p:column headerText="Autore" filterBy="#{libro.autore}" filterStyle="display:none">
+				<h:outputText value="#{libro.autore}" />
+			</p:column>
+			<p:column headerText="Anno di pubblicazione" filterBy="#{libro.anno}" filterStyle="display:none">
+				<h:outputText value="#{libro.anno}" />
+			</p:column>
+			<p:column headerText="Lingua" filterBy="#{libro.lingua}" filterStyle="display:none">
+				<h:outputText value="#{libro.lingua}" />
+			</p:column>
+			<p:column headerText="Serie" filterBy="#{libro.serie}" filterStyle="display:none">
+				<h:outputText value="#{libro.serie}" />
+			</p:column>
+			<p:column headerText="Collana" filterBy="#{libro.collana}" filterStyle="display:none">
+				<h:outputText value="#{libro.collana}" />
+			</p:column>
+			<p:column headerText="ISBN" filterBy="#{libro.isbn}" filterStyle="display:none">
+				<h:outputText value="#{libro.isbn}" />
+			</p:column>
+			<!-- 							 <p:column headerText="Genere"  sortBy="#{libro.titolo}"> -->
+			<!-- 								 	<h:outputText value="#{libro.genere}" /> -->
+			<!-- 							 </p:column> -->
+			<p:column headerText="Pagine">
+				<h:outputText value="#{libro.pagine}" />
+			</p:column>
+			<p:column headerText="Prezzo">
+				<h:outputText value="#{libro.prezzo}" />
+			</p:column>
+			<p:column headerText="Editore">
+				<h:outputText value="#{libro.editore}" />
+			</p:column>
+		</p:dataTable>
+
+		<p:droppable for="trash" tolerance="touch" datasource="books"
+			onDrop="handleDrop">
+			<p:ajax listener="#{beanLibro.deleteLibro}" update="books" />
+		</p:droppable>
+
+		<p:commandButton value="Torna alla pagina iniziale"
+			action="index?faces-redirect=true" />
+
+		<p:commandButton value="Aggiungi un libro"
+			action="inserimentoLibro?faces-redirect=true" />
+
+		<p:commandButton value="Modifica un libro"
+			action="modificaLibro?faces-redirect=true" />
+
+	</h:form>
+</h:body>
+
 </html>

@@ -1,8 +1,12 @@
 package com.sampa.library.controller.dto;
 
+import java.io.Serializable;
 
-public class DtoLibri {
+public class DtoLibri implements Serializable {
 
+	private static final long serialVersionUID = 1940436817120425488L;
+	
+	
 	private String titolo;
 	private String serie;
 	private String collana;

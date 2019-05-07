@@ -1,6 +1,10 @@
 package com.sampa.library.models.pojos;
 
-public class Libro {
+import java.io.Serializable;
+
+public class Libro implements Serializable {
+
+	private static final long serialVersionUID = -7333069492304902830L;
 
 	private int id;
 	private String titolo;

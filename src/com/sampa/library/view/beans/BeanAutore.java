@@ -41,12 +41,7 @@ public class BeanAutore implements Serializable {
 	}
 	
 	public void setAutori() {
-		try {
-			autori = dao.selectAll();
-		} catch (SQLException e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,"Lista non inizializzata",null));
-			e.printStackTrace();
-		}
+		autori = dao.getAll();
 	}
 	
 	public Autore getAutore() {
@@ -70,51 +65,31 @@ public class BeanAutore implements Serializable {
 	}
 
 	public void inserisciAutore() {
-		try {
-			dao.insert(autore);
-			setAutori();
-			FacesMessage msg = new FacesMessage("Successo :D",  "e' andato tutto bene, hai appena aggiunto : " + autore.getNome() + " " + autore.getCognome());
-			FacesContext.getCurrentInstance().addMessage(null, msg);
-		} catch (SQLException e) {
-			FacesMessage msg = new FacesMessage("Fallimento >.<",  "qualcosa e' andato storto");
-			FacesContext.getCurrentInstance().addMessage(null, msg);
-			e.printStackTrace();
-		}
+		dao.insert(autore);
+		setAutori();
+		FacesMessage msg = new FacesMessage("Successo :D",  "e' andato tutto bene, hai appena aggiunto : " + autore.getNome() + " " + autore.getCognome());
+		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
 	public void deleteAutori(DragDropEvent ddEvent) {
 		
 		DtoAutori autore = (DtoAutori) ddEvent.getData();
-		try {
-			dao.delete(autore.getId());
-			setAutori();
-			FacesMessage msg = new FacesMessage("Successo :D",  "e' andato tutto bene, hai appena eliminato : " + autore.getNomeCompleto());
-			FacesContext.getCurrentInstance().addMessage(null, msg);
-		} catch (SQLException e) {
-			FacesMessage msg = new FacesMessage("Fallimento >.<",  "qualcosa e' andato storto");
-			FacesContext.getCurrentInstance().addMessage(null, msg);
-			e.printStackTrace();
-		}
+		dao.delete(autore.getId());
+		setAutori();
+		FacesMessage msg = new FacesMessage("Successo :D",  "e' andato tutto bene, hai appena eliminato : " + autore.getNomeCompleto());
+		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 	
 	public void modifyAutore() throws SQLException {
-//		System.out.println("autore in modify: " + autore.toString());
-//		System.out.println("autoreTemp in modify: " + searchAutore(nome).toString());
-		try {
-			dao.update(autore,searchAutore(nomeDiRicerca).getId());
-			setAutori();
-			FacesMessage msg = new FacesMessage("Successo :D",  "e' andato tutto bene, modifica effettuata con successo");
-			FacesContext.getCurrentInstance().addMessage(null, msg);
-		} catch (SQLException e) {
-			FacesMessage msg = new FacesMessage("Fallimento >.<",  "qualcosa e' andato storto");
-			FacesContext.getCurrentInstance().addMessage(null, msg);
-			e.printStackTrace();
-		}
+dao.update(autore);
+		setAutori();
+		FacesMessage msg = new FacesMessage("Successo :D",  "e' andato tutto bene, modifica effettuata con successo");
+		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 	
 	private Autore searchAutore(String parametro) throws SQLException {
 		Autore autoreTemp;
-		autoreTemp = dao.findByParams("nome", parametro);
+		autoreTemp = dao.getByName(parametro);
 		return autoreTemp;
 	}
 }

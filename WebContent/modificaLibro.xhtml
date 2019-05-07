@@ -20,11 +20,10 @@
 				<h:panelGrid columns="2" columnClasses="label, value">
 				
 					<h:outputText value="Libro "/>
-					<p:selectOneMenu value="#{beanLibro.titoloDiRicerca}">
-						<f:selectItem itemLabel="Seleziona libro" itemValue=""/>
+					<p:selectOneMenu value="#{beanLibro.libroSelezionato}" converter="#{libroConverter}">
+						<f:selectItem itemLabel="Seleziona libro" itemValue="#{null}"/>
 						<f:selectItems value="#{beanLibro.libri}" var="libro"
-							itemLabel="#{libro.titolo}" itemValue="#{libro.titolo}"/>
-						<p:ajax event="change" update="@form" listener="#{beanLibro.creaLibro()}"/>
+							itemLabel="#{libro.titolo}" itemValue="#{libro}"/>
 					</p:selectOneMenu>
 					
 					
