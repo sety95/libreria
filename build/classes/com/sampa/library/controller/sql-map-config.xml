@@ -27,6 +27,6 @@
 	<mappers>
 		<mapper class = "com.sampa.library.controller.mappers.LibroMapper"/>		
 		<mapper class = "com.sampa.library.controller.mappers.AutoreMapper"/>		
-<!-- 		<mapper class = "com.sampa.library.controller.mappers.EditoreMapper"/>		 -->
+		<mapper class = "com.sampa.library.controller.mappers.EditoreMapper"/>		
 	</mappers>
 </configuration>

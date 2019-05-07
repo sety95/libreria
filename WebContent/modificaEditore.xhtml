@@ -24,7 +24,7 @@
 						<f:selectItem  itemLabel="Seleziona editore" itemValue=""/>
 						<f:selectItems value="#{beanEditore.editori}" var="editore"
 							itemLabel="#{editore.nome}" itemValue="#{editore.nome}"/>
-					<p:ajax event="change" update="@form" listener="#{beanEditore.creaEditore()}"/>
+					<p:ajax event="change" update="@form" listener="#{beanEditore.creaEditore}"/>
 					</p:selectOneMenu>
 					
 					

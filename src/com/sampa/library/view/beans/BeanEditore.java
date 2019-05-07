@@ -21,8 +21,8 @@ import com.sampa.library.models.pojos.Editore;
 public class BeanEditore implements Serializable{
 
 
-	private static final long serialVersionUID = 1L;
-
+	private static final long serialVersionUID = -2334676012107311662L;
+	
 	private List<DtoEditori> editori;
 	private EditoreDao dao;
 	private Editore editore;
@@ -43,8 +43,8 @@ public class BeanEditore implements Serializable{
 	public void setEditori() {
 		
 		try {
-			editori = dao.selectAll();
-		} catch (SQLException e) {
+			editori = dao.getAll();
+		} catch (Exception e) {
 			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"lista non inizializzata",null));
 			e.printStackTrace();
 		}
@@ -67,17 +67,14 @@ public class BeanEditore implements Serializable{
 		this.nome = nome;
 	}
 	
-	public void creaEditore() throws SQLException {
-		this.editore = searchEditore(nome);
-	}
 
 	public void inserisciEditore() {
 		try {
-			dao.insert(editore);
+			dao.inserisci(editore);
 			setEditori();
 			FacesMessage msg = new FacesMessage("Successo :D",  "e' andato tutto bene, hai appena aggiunto: " + editore.getNome());
 			FacesContext.getCurrentInstance().addMessage(null, msg);
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			FacesMessage msg = new FacesMessage("Fallimento >.<",  "qualcosa e' andato storto");
 			FacesContext.getCurrentInstance().addMessage(null, msg);
 			e.printStackTrace();
@@ -92,7 +89,7 @@ public class BeanEditore implements Serializable{
 			setEditori();
 			FacesMessage msg = new FacesMessage("Successo :D",  "e' andato tutto bene, hai appena eliminato : " + editore.getNome());
 			FacesContext.getCurrentInstance().addMessage(null, msg);
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			FacesMessage msg = new FacesMessage("Fallimento >.<",  "qualcosa e' andato storto");
 			FacesContext.getCurrentInstance().addMessage(null, msg);
 			e.printStackTrace();
@@ -102,20 +99,18 @@ public class BeanEditore implements Serializable{
 	public void modifyEditore() throws SQLException {
 
 		try {
-			dao.update(editore,searchEditore(nome).getId());
+			dao.modifica(editore);
 			setEditori();
 			FacesMessage msg = new FacesMessage("Successo :D",  "e' andato tutto bene, modifica effettuata con successo");
 			FacesContext.getCurrentInstance().addMessage(null, msg);
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			FacesMessage msg = new FacesMessage("Fallimento >.<",  "qualcosa e' andato storto");
 			FacesContext.getCurrentInstance().addMessage(null, msg);
 			e.printStackTrace();
 		}
 	}
 	
-	private Editore searchEditore(String parametro) throws SQLException {
-		Editore editoreTemp;
-		editoreTemp = dao.findByParams("nome", parametro);
-		return editoreTemp;
+	public void creaEditore() {
+		editore = dao.find(nome);
 	}
 }

@@ -37,6 +37,7 @@ public class BeanAutore implements Serializable {
 		dao = new AutoreDao();
 		autore = new Autore();
 		setAutori();
+		autori.stream().forEach(a -> System.out.println("### AUTORE: " + a.toString() + " ###"));
 	}
 
 	public List<DtoAutori> getAutori() {
@@ -65,7 +66,7 @@ public class BeanAutore implements Serializable {
 		this.nomeDiRicerca = nomeDiRicerca;
 	}
 
-	public void creaAutore() throws SQLException {
+	public void creaAutore() {
 		this.autore = searchAutore(nomeDiRicerca);
 	}
 
@@ -92,7 +93,7 @@ public class BeanAutore implements Serializable {
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
-	private Autore searchAutore(String parametro) throws SQLException {
+	private Autore searchAutore(String parametro) {
 		Autore autoreTemp;
 		autoreTemp = dao.getByName(parametro);
 		return autoreTemp;

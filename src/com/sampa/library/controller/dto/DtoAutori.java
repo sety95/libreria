@@ -6,7 +6,7 @@ public class DtoAutori {
 	private String nome;
 	private String cognome;
 	private String nazionalita;
-	private int eta;
+	private int anno_nascita;
 	private int id;
 	
 	public String getNome() {
@@ -27,11 +27,11 @@ public class DtoAutori {
 	public void setNazionalita(String nazionalita) {
 		this.nazionalita = nazionalita;
 	}
-	public int getEta() {
-		return eta;
+	public int getAnno_nascita() {
+		return anno_nascita;
 	}
-	public void setEta(int eta) {
-		this.eta = eta;
+	public void setAnno_nascita(int anno_nascita) {
+		this.anno_nascita = anno_nascita;
 	}
 	public int getId() {
 		return id;
@@ -41,6 +41,11 @@ public class DtoAutori {
 	}
 	public String getNomeCompleto() {
 		return nome + " " + cognome;
+	}
+	@Override
+	public String toString() {
+		return "DtoAutori [nome=" + nome + ", cognome=" + cognome + ", nazionalita=" + nazionalita + ", anno_nascita=" + anno_nascita
+				+ ", id=" + id + "]";
 	}
 
 }

@@ -35,7 +35,7 @@ public class BeanLibro implements Serializable {
 //	private String titolo;
 	
 	@PostConstruct
-	public void init() throws SQLException {
+	public void init() {
 //	titolo = "";
 	dao = new LibroDao();
 //	System.out.println("chiamato dao");
@@ -47,7 +47,7 @@ public class BeanLibro implements Serializable {
 		return libri;
 	}
 	
-	public void setLibri() throws SQLException {
+	public void setLibri() {
 		libri = dao.getAll();
 //			System.out.println("metodo chiamato per libri");
 	}
@@ -67,7 +67,7 @@ public class BeanLibro implements Serializable {
 			FacesMessage msg = new FacesMessage("Successo :D",  "e' andato tutto bene, hai appena aggiunto : " + libro.getTitolo());
 			FacesContext.getCurrentInstance().addMessage(null, msg);
 			return "libri?faces-redirect=true";
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			FacesMessage msg = new FacesMessage("Fallimento >.<",  "qualcosa e' andato storto");
 			FacesContext.getCurrentInstance().addMessage(null, msg);
 			e.printStackTrace();
@@ -91,7 +91,7 @@ public class BeanLibro implements Serializable {
 			setLibri();
 			FacesMessage msg = new FacesMessage("Successo :D",  "e' andato tutto bene, hai appena eliminato : " + libro.getTitolo());
 			FacesContext.getCurrentInstance().addMessage(null, msg);
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			FacesMessage msg = new FacesMessage("Fallimento >.<",  "qualcosa e' andato storto");
 			FacesContext.getCurrentInstance().addMessage(null, msg);
 			e.printStackTrace();
@@ -106,7 +106,7 @@ public class BeanLibro implements Serializable {
 			setLibri();
 			FacesMessage msg = new FacesMessage("Successo :D",  "e' andato tutto bene, modifica effettuata con successo");
 			FacesContext.getCurrentInstance().addMessage(null, msg);
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			FacesMessage msg = new FacesMessage("Fallimento >.<",  "qualcosa e' andato storto");
 			FacesContext.getCurrentInstance().addMessage(null, msg);
 			e.printStackTrace();}

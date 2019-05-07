@@ -45,6 +45,8 @@ public class AutoreDao implements AutoreMapper, Serializable{
 		SqlMapFactory.instance().openSession();
 		lista = AutoreDao.getMapper().getAll();
 		SqlMapFactory.instance().closeSession();
+		log.info("### LOG DAO: ###");
+		lista.stream().forEach(a -> System.out.println("### AUTORE: " + a.toString() + " ###"));
 		return lista;
 	}
 
