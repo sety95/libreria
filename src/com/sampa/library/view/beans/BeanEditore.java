@@ -10,6 +10,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
+import org.apache.log4j.Logger;
 import org.primefaces.event.DragDropEvent;
 
 import com.sampa.library.controller.dao.EditoreDao;
@@ -19,8 +20,8 @@ import com.sampa.library.models.pojos.Editore;
 @Named
 @SessionScoped
 public class BeanEditore implements Serializable{
-
-
+	
+	private static Logger log = Logger.getLogger(BeanEditore.class);
 	private static final long serialVersionUID = -2334676012107311662L;
 	
 	private List<DtoEditori> editori;
@@ -111,6 +112,12 @@ public class BeanEditore implements Serializable{
 	}
 	
 	public void creaEditore() {
+		log.info("### CREAZIONE EDITORE PER UPDATE ###");
 		editore = dao.find(nome);
+		log.info("### CREATO EDITORE: " + editore.toString() + " ###");
+	}
+	
+	public void eliminaEditore() {
+		this.editore = null;
 	}
 }

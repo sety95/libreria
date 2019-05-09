@@ -85,12 +85,12 @@ public class DtoLibri implements Serializable {
 	public void setEditore(String editore) {
 		this.editore = editore;
 	}
-/*	@Override
+	@Override
 	public String toString() {
-		return "DtoLibri [titolo=" + titolo + ", serie=" + serie + ", collana=" + collana + ", genere=" + genere
+		return "DtoLibri [titolo=" + titolo + ", serie=" + serie + ", collana=" + collana
 				+ ", lingua=" + lingua + ", pagine=" + pagine + ", anno=" + anno + ", isbn=" + isbn + ", prezzo="
 				+ prezzo + ", autore=" + autore + ", editore=" + editore + "]";
 	}
-	*/
+	
 	
 }

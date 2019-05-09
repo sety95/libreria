@@ -36,6 +36,8 @@ public class EditoreDao implements EditoreMapper, Serializable {
 		SqlMapFactory.instance().openSession();
 		editore = EditoreDao.getMapper().find(nome);
 		SqlMapFactory.instance().closeSession();
+		log.info("### EDITORE CARICATO DAL DB ###");
+		log.info("### " + editore.toString() + " ###");
 		return editore;
 	}
 

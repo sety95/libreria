@@ -8,23 +8,13 @@
 	xmlns:p="http://primefaces.org/ui">
    
    				 <h:head>
-  <script type="text/javascript">
-    function handleDrop(event, ui) {
-        var droppedAutori = ui.draggable;
- 
-        droppedAutori.fadeOut('fast');
-    }
-</script>
+
    				 </h:head> 
     				   
    				 	<h:body style="background-image: url(images/book.png);">
    				 		<h:form>
    				 		
-	   				 		<h:panelGrid>
-	   				 		<p:fieldset id="trash" legend="cestino">
-	   				 			<p:graphicImage id="cestino" value="/images/cestino.png"/>
-	   				 		</p:fieldset>
-	   				 		</h:panelGrid>
+	   				 
 	   				 		
    				 		<p:dataTable id="autori" var="autore" value="#{beanAutore.autori}">
    				 		
@@ -47,9 +37,6 @@
 
    				 		</p:dataTable>
    				 		
-   				 		<p:droppable for="trash" tolerance="touch" datasource="autori" onDrop="handleDrop">
-   				 			<p:ajax listener="#{beanAutore.deleteAutori}" update="autori"/>
-   				 		</p:droppable>
    				 		
 			   				<p:commandButton value="Torna alla pagina iniziale"  action="index?faces-redirect=true"/>
 														

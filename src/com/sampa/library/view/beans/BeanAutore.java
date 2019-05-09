@@ -69,21 +69,27 @@ public class BeanAutore implements Serializable {
 	public void creaAutore() {
 		this.autore = searchAutore(nomeDiRicerca);
 	}
+	
+	public void eliminaAutore() {
+		this.autore = null;
+	}
 
 	public void inserisciAutore() {
 		dao.insert(autore);
 		setAutori();
 		FacesMessage msg = new FacesMessage("Successo :D",  "e' andato tutto bene, hai appena aggiunto : " + autore.getNome() + " " + autore.getCognome());
 		FacesContext.getCurrentInstance().addMessage(null, msg);
+		eliminaAutore();
 	}
 
 	public void deleteAutori(DragDropEvent ddEvent) {
 
 		DtoAutori autore = (DtoAutori) ddEvent.getData();
 		dao.delete(autore.getId());
-		setAutori();
 		FacesMessage msg = new FacesMessage("Successo :D",  "e' andato tutto bene, hai appena eliminato : " + autore.getNomeCompleto());
 		FacesContext.getCurrentInstance().addMessage(null, msg);
+		setAutori();
+		eliminaAutore();
 	}
 
 	public void modifyAutore() throws SQLException {
@@ -91,6 +97,7 @@ public class BeanAutore implements Serializable {
 		setAutori();
 		FacesMessage msg = new FacesMessage("Successo :D",  "e' andato tutto bene, modifica effettuata con successo");
 		FacesContext.getCurrentInstance().addMessage(null, msg);
+		eliminaAutore(); 
 	}
 
 	private Autore searchAutore(String parametro) {

@@ -33,38 +33,48 @@ h1 {
 			<p:graphicImage id="trash" value="/images/cestino.png" />
 		</h:panelGrid>
 
-		<p:dataTable id="books" var="libro" value="#{beanLibro.libri}" widgetVar="libriLibrosi" filteredValue="#{beanLibro.listaFiltrata}" emptyMessage="Nessun elemento corrispondente">
+		<p:dataTable id="books" var="libro" value="#{beanLibro.libri}"
+			widgetVar="libriLibrosi" emptyMessage="Nessun elemento corrispondente" >
 
 			<f:facet name="header">
 				<p:outputPanel>
 					<h:outputText value="Cerca per titolo:" />
-					<p:inputText id="globalFilter" style="width:150px" placeholder="Inserisci titolo" onkeyup="PF('libriLibrosi').filter()"/>
+					<p:inputText id="globalFilter" style="width:150px"
+						placeholder="Inserisci titolo"
+						onkeyup="PF('libriLibrosi').filter()" />
 				</p:outputPanel>
 			</f:facet>
-			
+
 			<p:column>
 				<p:graphicImage id="img" value="/images/Book-icon.png" />
 				<p:draggable for="img" revert="true" helper="clone" />
 			</p:column>
-			<p:column headerText="Titolo" filterBy="#{libro.titolo}" filterStyle="display:none">
+			<p:column headerText="Titolo" filterBy="#{libro.titolo}"
+				filterStyle="display:none">
 				<h:outputText value="#{libro.titolo}" />
 			</p:column>
-			<p:column headerText="Autore" filterBy="#{libro.autore}" filterStyle="display:none">
+			<p:column headerText="Autore" filterBy="#{libro.autore}"
+				filterStyle="display:none">
 				<h:outputText value="#{libro.autore}" />
 			</p:column>
-			<p:column headerText="Anno di pubblicazione" filterBy="#{libro.anno}" filterStyle="display:none">
+			<p:column headerText="Anno di pubblicazione" filterBy="#{libro.anno}"
+				filterStyle="display:none">
 				<h:outputText value="#{libro.anno}" />
 			</p:column>
-			<p:column headerText="Lingua" filterBy="#{libro.lingua}" filterStyle="display:none">
+			<p:column headerText="Lingua" filterBy="#{libro.lingua}"
+				filterStyle="display:none">
 				<h:outputText value="#{libro.lingua}" />
 			</p:column>
-			<p:column headerText="Serie" filterBy="#{libro.serie}" filterStyle="display:none">
+			<p:column headerText="Serie" filterBy="#{libro.serie}"
+				filterStyle="display:none">
 				<h:outputText value="#{libro.serie}" />
 			</p:column>
-			<p:column headerText="Collana" filterBy="#{libro.collana}" filterStyle="display:none">
+			<p:column headerText="Collana" filterBy="#{libro.collana}"
+				filterStyle="display:none">
 				<h:outputText value="#{libro.collana}" />
 			</p:column>
-			<p:column headerText="ISBN" filterBy="#{libro.isbn}" filterStyle="display:none">
+			<p:column headerText="ISBN" filterBy="#{libro.isbn}"
+				filterStyle="display:none">
 				<h:outputText value="#{libro.isbn}" />
 			</p:column>
 			<!-- 							 <p:column headerText="Genere"  sortBy="#{libro.titolo}"> -->

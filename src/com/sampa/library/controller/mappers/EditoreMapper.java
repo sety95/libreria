@@ -16,7 +16,7 @@ public interface EditoreMapper {
 	final static String ELIMINA_EDITORE = "DELETE FROM editore WHERE id = #{id} ";
 	final static String MODIFICA_EDITORE = "UPDATE editore SET nome = #{nome}, indirizzo = #{indirizzo}, sito = #{sito} WHERE id = #{id} ";
 	final static String SELEZIONA_TUTTI_GLI_EDITORI = "SELECT * FROM editore";
-	final static String SELEZIONA_EDITORE = "SELECT * FROM editore WHERE ID = #{id}";
+	final static String SELEZIONA_EDITORE = "SELECT * FROM editore WHERE nome = #{nome}";
 	
 	@Select(SELEZIONA_TUTTI_GLI_EDITORI)
 	public List<DtoEditori> getAll();

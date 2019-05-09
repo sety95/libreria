@@ -2,7 +2,6 @@ package com.sampa.library.view.beans;
 
 import java.io.Serializable;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -27,7 +26,7 @@ public class BeanLibro implements Serializable {
 	private static final long serialVersionUID = -3415335071697029412L;
 	
 	private List<DtoLibri> libri;
-	private List<DtoLibri> listaFiltrata = new ArrayList<DtoLibri>();
+//	private List<DtoLibri> listaFiltrata = new ArrayList<DtoLibri>();
 	private LibroDao dao;
 	private Libro libro;
 //	private String titoloDiRicerca;
@@ -87,6 +86,7 @@ public class BeanLibro implements Serializable {
 	public void deleteLibro(DragDropEvent ddEvent) {
 		try {
 			DtoLibri libro = (DtoLibri) ddEvent.getData();
+			log.info("### LIBRO SCELTO:" + libro.toString());
 			dao.delete(libro.getIsbn());
 			setLibri();
 			FacesMessage msg = new FacesMessage("Successo :D",  "e' andato tutto bene, hai appena eliminato : " + libro.getTitolo());
@@ -128,11 +128,11 @@ public class BeanLibro implements Serializable {
 //		this.titolo = titolo;
 //	}
 
-	public List<DtoLibri> getListaFiltrata() {
-		return listaFiltrata;
-	}
-
-	public void setListaFiltrata(List<DtoLibri> listaFiltrata) {
-		this.listaFiltrata = listaFiltrata;
-	}
+//	public List<DtoLibri> getListaFiltrata() {
+//		return listaFiltrata;
+//	}
+//
+//	public void setListaFiltrata(List<DtoLibri> listaFiltrata) {
+//		this.listaFiltrata = listaFiltrata;
+//	}
 }
